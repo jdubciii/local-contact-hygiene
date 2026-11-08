@@ -1,0 +1,21 @@
+﻿record_id,first_name,last_name,company,email,phone,relationship,notes
+R001,  Ella,Monroe , NORTHSTAR HOME SERVICES , ella.monroe@northstar.example.invalid ,(480) 555-0101,Past customer,Original record A
+R002,Jorge,Sample,Bright Path Repairs,jorge.sample@brightpath.example.invalid,602.555.0102,Referral partner,Synthetic fixture
+R003,Morgan,Patel,Sample Ridge Co,morgan.patel@ridge.example.invalid,480-555-0103,Prospect,Synthetic fixture
+R004,Priya,Nguyen,Greenline Service,priya.nguyen@greenline.example.invalid,(623) 555-0104,Past customer,Synthetic fixture
+R005,Casey,Fiction,Example Field Group,casey.fiction@example.invalid,480 555 0105,Other,Synthetic fixture
+R006,Taylor,Sample,Mesa Example Works,taylor.sample@mesa.example.invalid,(602) 555-0106,Prospect,Synthetic fixture
+R007,Riley,Demo,Cactus Sample Co,riley.demo@cactus.example.invalid,480-555-0107,Referral partner,Synthetic fixture
+R008,Avery,Test,Silver Sample Services,avery.test@silver.example.invalid,(520) 555-0108,Past customer,Synthetic fixture
+R009,Jordan,Fiction,Copper Example LLC,jordan.fiction@copper.example.invalid,480-555-0109,Unknown,Synthetic fixture
+R010,Sam,Sample,Sunrise Mock Services,sam.sample@sunrise.example.invalid,(602) 555-0110,Prospect,Synthetic fixture
+R011,ella,monroe,Northstar Home Services,ELLA.MONROE@NORTHSTAR.EXAMPLE.INVALID,4805550101,Past customer,Exact duplicate fixture of R001
+R012,Morgan,Patel,Sample Ridge Company,MORGAN.PATEL@RIDGE.EXAMPLE.INVALID,4805550103,Unknown,"Same email, conflicting company fixture"
+R013,P. Nguyen,,Greenline Service,,6235550104,Unknown,Phone-only possible match fixture
+R014,Robin,Example,,robin@example.invalid,,Unknown,Missing company and phone
+R015,Drew,Sample,Juniper Example Services,drew@,abc,Prospect,Malformed email and phone fixture
+R016,Alex,Mock,Sample Valley LLC,alex.mock@valley.example.invalid,(928) 555-0116,Referral partner,Synthetic fixture
+R017,Blair,Test,Mesa Example Works,blair.test@mesa.example.invalid,(602) 555-0117,Past customer,Synthetic fixture
+R018,Sky,Fiction,Desert Sample Group,sky.fiction@desert.example.invalid,480-555-0118,Prospect,Synthetic fixture
+R019,Quinn,Demo,Palo Verde Examples,quinn.demo@palo.example.invalid,(623) 555-0119,Other,Synthetic fixture
+R020,Emery,Sample,Canyon Mock Company,emery.sample@canyon.example.invalid,6025550120,Prospect,Synthetic fixture
