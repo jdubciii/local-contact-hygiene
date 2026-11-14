@@ -10,7 +10,7 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Any
 
-VERSION = "0.1.0"
+VERSION = "0.1.1"
 REQUIRED_COLUMNS = ("record_id", "first_name", "last_name", "company", "email", "phone")
 GENERATED_COLUMNS = (
     "normalized_first_name",
@@ -250,6 +250,19 @@ def process_csv(input_csv: str | Path, output_dir: str | Path) -> dict[str, Any]
     return summary
 
 
+def _default_output_path(input_path: Path) -> Path:
+    """Choose the first unused default output path; never replace prior results."""
+    base = input_path.with_name(f"{input_path.stem}_hygiene")
+    if not base.exists() and not base.is_symlink():
+        return base
+    suffix = 1
+    while True:
+        candidate = input_path.with_name(f"{input_path.stem}_hygiene_{suffix:03d}")
+        if not candidate.exists() and not candidate.is_symlink():
+            return candidate
+        suffix += 1
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
         description="Review a contact CSV locally. The tool never merges or deletes records."
@@ -259,7 +272,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     input_path = Path(args.input_csv)
-    destination = Path(args.output_dir) if args.output_dir else input_path.with_name(f"{input_path.stem}_hygiene")
+    destination = Path(args.output_dir) if args.output_dir else _default_output_path(input_path)
     try:
         summary = process_csv(input_path, destination)
     except FileNotFoundError:

@@ -1,10 +1,12 @@
 import csv
+import io
 import json
 import tempfile
 import unittest
+from contextlib import redirect_stdout
 from pathlib import Path
 
-from contact_hygiene import process_csv
+from contact_hygiene import main, process_csv
 
 
 HEADER = ["record_id", "first_name", "last_name", "company", "email", "phone", "extra_note"]
@@ -116,6 +118,23 @@ class ContactHygieneTests(unittest.TestCase):
         self.assertNotIn("user@example.invalid", summary_text)
         self.assertNotIn("4805550101", summary_text)
         self.assertTrue((self.output_dir / "summary.json").is_file())
+
+    def test_cli_default_output_uses_first_unused_suffix_without_overwriting(self):
+        self.write_rows(self.fixture_rows())
+        first = self.root / "contacts_hygiene"
+        second = self.root / "contacts_hygiene_001"
+        first.mkdir()
+        second.mkdir()
+        (first / "keep.txt").write_text("first", encoding="utf-8")
+        (second / "keep.txt").write_text("second", encoding="utf-8")
+
+        with redirect_stdout(io.StringIO()):
+            exit_code = main([str(self.input_path)])
+
+        self.assertEqual(exit_code, 0)
+        self.assertTrue((self.root / "contacts_hygiene_002" / "summary.json").is_file())
+        self.assertEqual((first / "keep.txt").read_text(encoding="utf-8"), "first")
+        self.assertEqual((second / "keep.txt").read_text(encoding="utf-8"), "second")
 
 
 if __name__ == "__main__":

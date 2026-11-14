@@ -10,7 +10,7 @@ The included 20-row sample is fictional. Completed email addresses use the reser
 
 - Python 3.10 or newer. Standard library only. No `pip install`, account, API key, server, or paid service.
 - Input must have these exact column headers: `record_id`, `first_name`, `last_name`, `company`, `email`, `phone`. `record_id` values must be nonblank and unique. Other input columns are preserved. Do not use input columns named like the generated fields listed below.
-- The source file is never modified. The output directory must not already exist, to prevent accidental overwrite.
+- The source file is never modified. Results are never overwritten. Without `--output-dir`, the utility uses `<input-stem>_hygiene`, then the first unused suffix (`_001`, `_002`, and so on) if that directory already exists. An explicit `--output-dir` must not already exist.
 
 Try the included synthetic example:
 
@@ -24,7 +24,13 @@ On macOS or Linux:
 python3 ./contact_hygiene.py ./sample_contacts.csv
 ```
 
-For your own file, choose a new output directory:
+For your own file, let the utility select the next unused output directory:
+
+```sh
+python3 ./contact_hygiene.py ./contacts.csv
+```
+
+To choose a specific output directory, it must not already exist:
 
 ```sh
 python3 ./contact_hygiene.py ./contacts.csv --output-dir ./contacts-review-output

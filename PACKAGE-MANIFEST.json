@@ -1,0 +1,11 @@
+{
+  "version": "0.1.1",
+  "private_offline_candidate": true,
+  "files": {
+    "LICENSE": "541b6225ab424955b8fa0e922d7bb75ee139e650bc4a0dfb00e8365fe571eebd",
+    "README.md": "77b97f0a2c7e4974f97140ca8ab99f8a1c1e49afbeb131a4649e3aba8ddefec3",
+    "contact_hygiene.py": "cbf41ae76421d917f2d20555887c7a1cde72059b2c8c7924248869e6939ec43d",
+    "sample_contacts.csv": "e4bfeefaf85dd84c1270a3256bd87404eba1c1143a11134b49eb5549e7f75584",
+    "tests/test_contact_hygiene.py": "feecf13d1164066a703c763ac3ff8e900b6a563373a52a59eb0edf7206a59ef6"
+  }
+}
